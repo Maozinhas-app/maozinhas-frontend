@@ -129,7 +129,7 @@ export function HomePage({ searchTerm }: { searchTerm?: string }) {
             <Logo size="sm" />
             
             <div className="flex items-center gap-4">
-              <button className="button is-ghost p-2" aria-label="Perfil">
+              <button className="p-2 rounded-lg hover:bg-secondary transition-colors" aria-label="Perfil">
                 <UserIcon className="w-5 h-5 text-muted-foreground" />
               </button>
             </div>
@@ -141,36 +141,32 @@ export function HomePage({ searchTerm }: { searchTerm?: string }) {
       <section className="bg-card border-b border-border py-6">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
-            <div className="field has-addons">
-              <div className="control is-expanded">
+            <div className="flex gap-2">
                 <input
                   type="text"
-                  className="input is-medium"
+                className="flex-1 px-4 py-3 rounded-lg bg-input border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                   placeholder="Buscar serviços..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
-              </div>
-              <div className="control">
-                <button className="button is-primary is-medium">
+              <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center">
                   <SearchIcon className="w-5 h-5" />
                 </button>
-              </div>
             </div>
             
             {/* Quick Filters */}
             <div className="flex flex-wrap gap-2 mt-4">
-              <button className="tag is-medium bg-secondary text-foreground cursor-pointer hover:bg-primary/20 transition-colors">
+              <button className="px-4 py-2 rounded-full bg-secondary text-foreground text-sm font-medium cursor-pointer hover:bg-primary/20 transition-colors flex items-center">
                 <FilterIcon className="w-4 h-4 mr-1" />
                 Filtros
               </button>
-              <button className="tag is-medium bg-secondary text-foreground cursor-pointer hover:bg-primary/20 transition-colors">
+              <button className="px-4 py-2 rounded-full bg-secondary text-foreground text-sm font-medium cursor-pointer hover:bg-primary/20 transition-colors">
                 Mais próximos
               </button>
-              <button className="tag is-medium bg-secondary text-foreground cursor-pointer hover:bg-primary/20 transition-colors">
+              <button className="px-4 py-2 rounded-full bg-secondary text-foreground text-sm font-medium cursor-pointer hover:bg-primary/20 transition-colors">
                 Melhor avaliados
               </button>
-              <button className="tag is-medium bg-secondary text-foreground cursor-pointer hover:bg-primary/20 transition-colors">
+              <button className="px-4 py-2 rounded-full bg-secondary text-foreground text-sm font-medium cursor-pointer hover:bg-primary/20 transition-colors">
                 Disponíveis agora
               </button>
             </div>
@@ -181,19 +177,19 @@ export function HomePage({ searchTerm }: { searchTerm?: string }) {
       {/* Results */}
       <main className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="title is-5 text-foreground mb-0">
+          <h2 className="text-xl font-semibold text-foreground">
             {mockServices.length} serviços encontrados perto de você
           </h2>
         </div>
 
-        <div className="columns is-multiline">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {mockServices.map((service, index) => (
             <div
               key={service.id}
-              className="column is-12-mobile is-6-tablet is-4-desktop animate-fade-in-up"
+              className="animate-fade-in-up"
               style={{ animationDelay: `${index * 0.1}s`, opacity: 0, animationFillMode: "forwards" }}
             >
-              <div className="box service-card h-full">
+              <div className="bg-card border border-border rounded-lg p-6 service-card h-full">
                 <div className="flex items-start gap-4">
                   {/* Avatar */}
                   <div className="relative flex-shrink-0">
@@ -214,7 +210,7 @@ export function HomePage({ searchTerm }: { searchTerm?: string }) {
                     <div className="flex items-start justify-between">
                       <div>
                         <h3 className="font-semibold text-foreground truncate">{service.name}</h3>
-                        <span className="tag is-small bg-primary/10 text-primary mt-1">
+                        <span className="inline-block px-2 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary mt-1">
                           {service.category}
                         </span>
                       </div>
@@ -270,11 +266,11 @@ export function HomePage({ searchTerm }: { searchTerm?: string }) {
 
                 {/* Actions */}
                 <div className="flex gap-2 mt-4">
-                  <button className="button is-primary is-small flex-1">
+                  <button className="flex-1 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center text-sm font-medium">
                     <MessageCircleIcon className="w-4 h-4 mr-1" />
                     Contato
                   </button>
-                  <button className="button is-light is-small">
+                  <button className="px-4 py-2 bg-secondary text-foreground rounded-lg hover:bg-secondary/80 transition-colors flex items-center justify-center">
                     <PhoneIcon className="w-4 h-4" />
                   </button>
                 </div>

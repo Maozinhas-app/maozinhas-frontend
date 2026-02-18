@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
-@import url('https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -90,103 +89,6 @@
   }
 }
 
-/* Custom Bulma overrides for dark theme */
-.input, .textarea, .select select {
-  background-color: var(--input) !important;
-  border-color: var(--border) !important;
-  color: var(--foreground) !important;
-  font-size: 1rem !important;
-  padding: 0.75rem 1rem !important;
-  border-radius: var(--radius-md) !important;
-  transition: all 0.3s ease !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
-}
-
-.input.is-medium, .textarea.is-medium {
-  font-size: 1.125rem !important;
-  padding: 1rem 1.25rem !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
-}
-
-.input.is-large {
-  font-size: 1.25rem !important;
-  padding: 1.25rem 1.5rem !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
-}
-
-.textarea {
-  min-height: 120px !important;
-  resize: vertical !important;
-}
-
-.input::placeholder, .textarea::placeholder {
-  color: var(--muted-foreground) !important;
-  opacity: 0.6 !important;
-}
-
-.input:hover, .textarea:hover {
-  border-color: oklch(0.35 0.01 260) !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
-}
-
-.input:focus, .textarea:focus, .select select:focus {
-  border-color: var(--primary) !important;
-  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15), 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-  outline: none !important;
-}
-
-.label {
-  color: var(--foreground) !important;
-  font-weight: 600 !important;
-  font-size: 0.95rem !important;
-  margin-bottom: 0.5rem !important;
-  display: flex;
-  align-items: center;
-}
-
-.help {
-  font-size: 0.875rem !important;
-  margin-top: 0.5rem !important;
-}
-
-.button.is-primary {
-  background-color: var(--primary) !important;
-  color: var(--primary-foreground) !important;
-  border: none !important;
-  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3) !important;
-  transition: all 0.3s ease !important;
-  padding: 0.75rem 1.5rem !important;
-}
-
-.button.is-primary:hover {
-  background-color: oklch(0.6 0.18 145) !important;
-  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4) !important;
-  transform: translateY(-2px);
-}
-
-.button.is-primary:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3) !important;
-}
-
-.button.is-primary.is-large {
-  padding: 1rem 2rem !important;
-}
-
-.button.is-primary.is-medium {
-  padding: 0.875rem 1.75rem !important;
-}
-
-.button.is-light {
-  background-color: var(--secondary) !important;
-  color: var(--foreground) !important;
-}
-
-.box {
-  background-color: var(--card) !important;
-  border: 1px solid var(--border) !important;
-}
-
 /* Animations */
 @keyframes fadeInUp {
   from {
@@ -227,6 +129,17 @@
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -277,6 +190,23 @@
 .delay-300 { animation-delay: 0.3s; }
 .delay-400 { animation-delay: 0.4s; }
 .delay-500 { animation-delay: 0.5s; }
+
+/* ── Hand onboarding animations ── */
+@keyframes drawFinger {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.02; }
+  50% { opacity: 0.06; }
+}
 
 /* Card hover effects */
 .service-card {

@@ -87,20 +87,19 @@ export function Onboarding({ onComplete }: { onComplete: (type: UserType, data?:
               Como podemos ajudar você hoje?
             </p>
 
-            <div className="columns is-centered">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
               {/* Seeker Card */}
-              <div className="column is-5">
+              <div>
                 <div
                   onClick={() => handleChoiceSelect("seeker")}
-                  className={`box choice-card p-8 text-center ${userType === "seeker" ? "border-primary" : ""}`}
-                  style={{ borderWidth: "2px" }}
+                  className={`bg-card border-2 rounded-lg choice-card p-8 text-center cursor-pointer ${userType === "seeker" ? "border-primary" : "border-border"}`}
                 >
                   <div className="flex justify-center mb-6">
                     <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center">
                       <SearchIcon className="w-10 h-10 text-primary" />
                     </div>
                   </div>
-                  <h3 className="title is-4 text-foreground mb-4">Buscar Serviço</h3>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">Buscar Serviço</h3>
                   <p className="text-muted-foreground">
                     Encontre profissionais qualificados perto de você para realizar o serviço que precisa.
                   </p>
@@ -113,18 +112,17 @@ export function Onboarding({ onComplete }: { onComplete: (type: UserType, data?:
               </div>
 
               {/* Provider Card */}
-              <div className="column is-5">
+              <div>
                 <div
                   onClick={() => handleChoiceSelect("provider")}
-                  className={`box choice-card p-8 text-center ${userType === "provider" ? "border-primary" : ""}`}
-                  style={{ borderWidth: "2px" }}
+                  className={`bg-card border-2 rounded-lg choice-card p-8 text-center cursor-pointer ${userType === "provider" ? "border-primary" : "border-border"}`}
                 >
                   <div className="flex justify-center mb-6">
                     <div className="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center">
                       <BriefcaseIcon className="w-10 h-10 text-accent" />
                     </div>
                   </div>
-                  <h3 className="title is-4 text-foreground mb-4">Sou Prestador</h3>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">Sou Prestador</h3>
                   <p className="text-muted-foreground">
                     Cadastre seus serviços e alcance novos clientes na sua região.
                   </p>
@@ -144,33 +142,32 @@ export function Onboarding({ onComplete }: { onComplete: (type: UserType, data?:
           <div className="animate-slide-in-right" style={{ animationFillMode: "forwards" }}>
             <button
               onClick={handleBack}
-              className="button is-ghost mb-6 text-muted-foreground hover:text-foreground"
+              className="flex items-center mb-6 text-muted-foreground hover:text-foreground transition-colors"
             >
               <ArrowLeftIcon className="w-4 h-4 mr-2" />
               Voltar
             </button>
 
-            <div className="box p-8 max-w-lg mx-auto">
+            <div className="bg-card border border-border rounded-lg p-8 max-w-lg mx-auto">
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
                   <SearchIcon className="w-7 h-7 text-primary" />
                 </div>
                 <div>
-                  <h2 className="title is-4 text-foreground mb-1">Buscar Serviço</h2>
+                  <h2 className="text-2xl font-bold text-foreground mb-1">Buscar Serviço</h2>
                   <p className="text-muted-foreground text-sm">Encontre o profissional ideal</p>
                 </div>
               </div>
 
               <form onSubmit={handleSeekerSubmit}>
-                <div className="field">
-                  <label className="label">
+                <div className="mb-6">
+                  <label className="flex items-center text-foreground font-semibold mb-2">
                     <MapPinIcon className="w-4 h-4 mr-2 text-primary" />
                     Seu CEP
                   </label>
-                  <div className="control">
                     <input
                       type="text"
-                      className="input is-large"
+                    className="w-full px-6 py-4 text-lg rounded-lg bg-input border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                       placeholder="00000-000"
                       value={seekerData.cep}
                       onChange={(e) =>
@@ -179,21 +176,19 @@ export function Onboarding({ onComplete }: { onComplete: (type: UserType, data?:
                       maxLength={9}
                       required
                     />
-                  </div>
-                  <p className="help text-muted-foreground mt-2">
+                  <p className="text-sm text-muted-foreground mt-2">
                     Usaremos para encontrar serviços próximos de você
                   </p>
                 </div>
 
-                <div className="field" style={{ marginTop: '2rem' }}>
-                  <label className="label">
+                <div className="mb-6">
+                  <label className="flex items-center text-foreground font-semibold mb-2">
                     <WrenchIcon className="w-4 h-4 mr-2 text-primary" />
                     Qual serviço você precisa?
                   </label>
-                  <div className="control">
                     <input
                       type="text"
-                      className="input is-large"
+                    className="w-full px-6 py-4 text-lg rounded-lg bg-input border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                       placeholder="Ex: Pintor, Eletricista, Encanador..."
                       value={seekerData.service}
                       onChange={(e) =>
@@ -201,16 +196,14 @@ export function Onboarding({ onComplete }: { onComplete: (type: UserType, data?:
                       }
                       required
                     />
-                  </div>
-                  <p className="help text-muted-foreground mt-2">
+                  <p className="text-sm text-muted-foreground mt-2">
                     Digite o tipo de profissional que você está buscando
                   </p>
                 </div>
 
                 <button
                   type="submit"
-                  className="button is-primary is-large is-fullwidth flex items-center justify-center"
-                  style={{ marginTop: '2.5rem' }}
+                  className="w-full px-6 py-4 text-lg font-medium bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center mt-8 disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={!seekerData.cep || !seekerData.service}
                 >
                   <span>Buscar Serviços</span>
@@ -226,34 +219,33 @@ export function Onboarding({ onComplete }: { onComplete: (type: UserType, data?:
           <div className="animate-slide-in-right" style={{ animationFillMode: "forwards" }}>
             <button
               onClick={handleBack}
-              className="button is-ghost mb-6 text-muted-foreground hover:text-foreground"
+              className="flex items-center mb-6 text-muted-foreground hover:text-foreground transition-colors"
             >
               <ArrowLeftIcon className="w-4 h-4 mr-2" />
               Voltar
             </button>
 
-            <div className="box p-8 max-w-2xl mx-auto">
+            <div className="bg-card border border-border rounded-lg p-8 max-w-2xl mx-auto">
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center">
                   <BriefcaseIcon className="w-7 h-7 text-accent" />
                 </div>
                 <div>
-                  <h2 className="title is-4 text-foreground mb-1">Cadastro de Prestador</h2>
+                  <h2 className="text-2xl font-bold text-foreground mb-1">Cadastro de Prestador</h2>
                   <p className="text-muted-foreground text-sm">Preencha seus dados para começar</p>
                 </div>
               </div>
 
               <form onSubmit={handleProviderSubmit}>
                 {/* Company Name */}
-                <div className="field">
-                  <label className="label">
+                <div className="mb-6">
+                  <label className="flex items-center text-foreground font-semibold mb-2">
                     <BuildingIcon className="w-4 h-4 mr-2 text-accent" />
                     Nome da Empresa
                   </label>
-                  <div className="control">
                     <input
                       type="text"
-                      className="input is-large"
+                    className="w-full px-6 py-4 text-lg rounded-lg bg-input border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                       placeholder="Nome da sua empresa ou seu nome"
                       value={providerData.companyName}
                       onChange={(e) =>
@@ -261,25 +253,22 @@ export function Onboarding({ onComplete }: { onComplete: (type: UserType, data?:
                       }
                       required
                     />
-                  </div>
                 </div>
 
                 {/* Address Section */}
-                <div style={{ marginTop: '2.5rem', marginBottom: '1.5rem' }}>
+                <div className="mt-10 mb-6">
                   <p className="text-foreground font-semibold text-lg flex items-center">
                     <MapPinIcon className="w-5 h-5 mr-2 text-accent" />
                     Endereço Completo
                   </p>
                 </div>
 
-                <div className="columns is-multiline" style={{ marginBottom: '0.5rem' }}>
-                  <div className="column is-4">
-                    <div className="field">
-                      <label className="label">CEP</label>
-                      <div className="control">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-6">
+                  <div className="md:col-span-4">
+                    <label className="block text-foreground font-medium mb-2">CEP</label>
                         <input
                           type="text"
-                          className="input is-medium"
+                      className="w-full px-4 py-3 rounded-lg bg-input border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                           placeholder="00000-000"
                           value={providerData.cep}
                           onChange={(e) =>
@@ -289,15 +278,11 @@ export function Onboarding({ onComplete }: { onComplete: (type: UserType, data?:
                           required
                         />
                       </div>
-                    </div>
-                  </div>
-                  <div className="column is-8">
-                    <div className="field">
-                      <label className="label">Rua</label>
-                      <div className="control">
+                  <div className="md:col-span-8">
+                    <label className="block text-foreground font-medium mb-2">Rua</label>
                         <input
                           type="text"
-                          className="input is-medium"
+                      className="w-full px-4 py-3 rounded-lg bg-input border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                           placeholder="Nome da rua"
                           value={providerData.street}
                           onChange={(e) =>
@@ -306,15 +291,11 @@ export function Onboarding({ onComplete }: { onComplete: (type: UserType, data?:
                           required
                         />
                       </div>
-                    </div>
-                  </div>
-                  <div className="column is-3">
-                    <div className="field">
-                      <label className="label">Número</label>
-                      <div className="control">
+                  <div className="md:col-span-3">
+                    <label className="block text-foreground font-medium mb-2">Número</label>
                         <input
                           type="text"
-                          className="input is-medium"
+                      className="w-full px-4 py-3 rounded-lg bg-input border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                           placeholder="123"
                           value={providerData.number}
                           onChange={(e) =>
@@ -323,15 +304,11 @@ export function Onboarding({ onComplete }: { onComplete: (type: UserType, data?:
                           required
                         />
                       </div>
-                    </div>
-                  </div>
-                  <div className="column is-5">
-                    <div className="field">
-                      <label className="label">Bairro</label>
-                      <div className="control">
+                  <div className="md:col-span-5">
+                    <label className="block text-foreground font-medium mb-2">Bairro</label>
                         <input
                           type="text"
-                          className="input is-medium"
+                      className="w-full px-4 py-3 rounded-lg bg-input border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                           placeholder="Nome do bairro"
                           value={providerData.neighborhood}
                           onChange={(e) =>
@@ -340,15 +317,11 @@ export function Onboarding({ onComplete }: { onComplete: (type: UserType, data?:
                           required
                         />
                       </div>
-                    </div>
-                  </div>
-                  <div className="column is-4">
-                    <div className="field">
-                      <label className="label">Cidade</label>
-                      <div className="control">
+                  <div className="md:col-span-8">
+                    <label className="block text-foreground font-medium mb-2">Cidade</label>
                         <input
                           type="text"
-                          className="input is-medium"
+                      className="w-full px-4 py-3 rounded-lg bg-input border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                           placeholder="Cidade"
                           value={providerData.city}
                           onChange={(e) =>
@@ -357,15 +330,11 @@ export function Onboarding({ onComplete }: { onComplete: (type: UserType, data?:
                           required
                         />
                       </div>
-                    </div>
-                  </div>
-                  <div className="column is-4">
-                    <div className="field">
-                      <label className="label">Estado (UF)</label>
-                      <div className="control">
+                  <div className="md:col-span-4">
+                    <label className="block text-foreground font-medium mb-2">Estado (UF)</label>
                         <input
                           type="text"
-                          className="input is-medium"
+                      className="w-full px-4 py-3 rounded-lg bg-input border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                           placeholder="SP"
                           value={providerData.state}
                           onChange={(e) =>
@@ -374,20 +343,17 @@ export function Onboarding({ onComplete }: { onComplete: (type: UserType, data?:
                           maxLength={2}
                           required
                         />
-                      </div>
-                    </div>
                   </div>
                 </div>
 
                 {/* Services */}
-                <div className="field" style={{ marginTop: '2rem' }}>
-                  <label className="label">
+                <div className="mb-6">
+                  <label className="flex items-center text-foreground font-semibold mb-2">
                     <WrenchIcon className="w-4 h-4 mr-2 text-accent" />
                     Serviços Prestados
                   </label>
-                  <div className="control">
                     <textarea
-                      className="textarea is-medium"
+                    className="w-full px-4 py-3 rounded-lg bg-input border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-vertical"
                       placeholder="Descreva os serviços que você oferece (ex: Pintura residencial, Pintura comercial, Texturização...)"
                       rows={4}
                       value={providerData.services}
@@ -396,21 +362,15 @@ export function Onboarding({ onComplete }: { onComplete: (type: UserType, data?:
                       }
                       required
                     />
-                  </div>
-                  <p className="help text-muted-foreground">
+                  <p className="text-sm text-muted-foreground mt-2">
                     Seja específico para que os clientes encontrem você facilmente
                   </p>
                 </div>
 
                 <button
                   type="submit"
-                  className="button is-primary is-large is-fullwidth flex items-center justify-center"
+                  className="w-full px-6 py-4 text-lg font-medium bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors flex items-center justify-center mt-8 disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={!providerData.companyName || !providerData.cep || !providerData.services}
-                  style={{ 
-                    backgroundColor: "var(--accent)", 
-                    color: "var(--accent-foreground)",
-                    marginTop: '2.5rem'
-                  }}
                 >
                   <span>Cadastrar Empresa</span>
                   <ArrowRightIcon className="w-5 h-5 ml-2" style={{ flexShrink: 0 }} />
