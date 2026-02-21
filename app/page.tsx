@@ -4,6 +4,7 @@ import { useState } from "react";
 import { NewOnboarding } from "@/components/new-onboarding";
 import { NewHomePage } from "@/components/new-home-page";
 import { ProviderSuccess } from "@/components/provider-success";
+import { ChatWidget } from "@/components/chat-widget";
 
 type UserType = "seeker" | "provider" | null;
 type AppState = "onboarding" | "home" | "provider-success" | "provider-dashboard";
@@ -43,11 +44,21 @@ export default function Page() {
 
   // Render based on app state
   if (appState === "onboarding") {
-    return <NewOnboarding onSearch={handleSearch} />;
+    return (
+      <>
+        <NewOnboarding onSearch={handleSearch} />
+        <ChatWidget />
+      </>
+    );
   }
 
   if (appState === "home") {
-    return <NewHomePage initialCategory={seekerData?.category} />;
+    return (
+      <>
+        <NewHomePage initialCategory={seekerData?.category} />
+        <ChatWidget />
+      </>
+    );
   }
 
   if (appState === "provider-success" && providerData) {
